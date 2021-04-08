@@ -20,6 +20,8 @@ RUN mkdir /data && chown -R www-data /data && chmod 755 /data & chmod 777 -R /va
 # enable userdir and php
 RUN a2enmod php7.3
 
+# Copy config. apache2 
+COPY apache2.conf /etc/apache2
 
 # we run a script to stat the server; the array syntax makes it so ^C will work as we want
 CMD  ["./entrypoint.sh"]
