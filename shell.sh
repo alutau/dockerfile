@@ -1,13 +1,13 @@
+
 #!/usr/bin/env bash
 
-# debug.sh
+# shell.sh
 
-# run container without making it a daemon - useful to see logging output
+# This script starts a shell in an already built container.  Sometimes you need to poke around using the shell
+# to diagnose problems.
 
-docker run \
-    --rm \
-    -it \
-    -p8086:80 \
-    --name="protegido" \
-    -v `pwd`:/home/app \
-    protegido
+# stop any existing running container
+./stop.sh
+
+# fire up the container with shell (/bin/bash)
+docker run -it --rm --name apache2 apache2 /bin/bash

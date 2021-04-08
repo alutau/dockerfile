@@ -1,13 +1,16 @@
+
 #!/usr/bin/env bash
 
-# debug.sh
+# run.sh
 
-# run container without making it a daemon - useful to see logging output
+# run the container in the background
+# /data is persisted using a named container
 
 docker run \
     --detach \
     --rm \
     -p8086:80 \
+    -p8080:443 \
     -v name:/data \
-    --name="access" \
-    access
+    --name="apache2" \
+    apache2
